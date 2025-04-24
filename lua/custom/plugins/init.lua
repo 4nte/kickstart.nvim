@@ -16,6 +16,13 @@ vim.cmd([[
 vim.diagnostic.config({ virtual_text = false })
 return {
 	{
+		"karb94/neoscroll.nvim",
+		opts = {},
+	},
+	{ "terrastruct/d2-vim",   ft = 'd2' },
+	{ "nvim-neotest/nvim-nio" },
+	{ 'towolf/vim-helm',      ft = 'helm' },
+	{
 		"rachartier/tiny-inline-diagnostic.nvim",
 		event = "VeryLazy", -- Or `LspAttach`
 		priority = 1000, -- needs to be loaded in first

@@ -588,12 +588,6 @@ local servers = {
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
 
   bufls = {},
-  helm_ls = {
-    yamlls = {
-      path = "yaml-language-server",
-    }
-  },
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -603,7 +597,13 @@ local servers = {
     },
   },
   csharp_ls = {
-  }
+  },
+  ['helm-ls'] = {
+    yamlls = {
+      path = "yaml-language-server",
+    }
+  },
+  yamlls = {}
 
 }
 
