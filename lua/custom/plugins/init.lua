@@ -53,11 +53,20 @@ return {
 		version = '^1.0.0', -- optional: only update when a new 1.x version is released
 	},
 	{
-		'Lilja/zellij.nvim',
-		opts = {
-			whichKeyEnabled = true,
-		}
+		"https://github.com/fresh2dev/zellij.vim",
+		lazy = false,
+		init = function()
+			vim.g.zellij_navigator_move_focus_or_tab = 1
+			-- vim.g.zellij_navigator_no_default_mappings = 1  -- only if you want to bind manually
+		end,
 	},
+
+	-- {
+	-- 	'Lilja/zellij.nvim',
+	-- 	opts = {
+	-- 		whichKeyEnabled = true,
+	-- 	}
+	-- },
 	{
 		'windwp/nvim-autopairs',
 		event = "InsertEnter",
