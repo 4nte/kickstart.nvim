@@ -57,7 +57,24 @@ return {
 	    "nvim-tree/nvim-web-devicons",
 	  },
 	  config = function()
-	    require("nvim-tree").setup {}
+	    local api = require("nvim-tree.api")
+
+	    local function preview_external()
+	      local node = api.tree.get_node_under_cursor()
+	      if not node or not node.absolute_path or node.type ~= "file" then
+	        vim.notify("No file under cursor", vim.log.levels.WARN)
+	        return
+	      end
+	      vim.fn.jobstart({ "xdg-open", node.absolute_path }, { detach = true })
+	    end
+
+	    local function on_attach(bufnr)
+	      api.config.mappings.default_on_attach(bufnr)
+	      vim.keymap.set("n", "<leader>iv", preview_external,
+	        { buffer = bufnr, noremap = true, silent = true, desc = "[I]mage [V]iew (external)" })
+	    end
+
+	    require("nvim-tree").setup({ on_attach = on_attach })
 	  end,
 	}
 	}
